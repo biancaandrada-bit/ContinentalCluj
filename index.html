@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Continental rămâne al Clujului</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero" aria-labelledby="title">
+        <div class="hero__content">
+          <p class="kicker">Inițiativă civică Cluj-Napoca</p>
+          <h1 id="title">Continental rămâne parte din memoria orașului</h1>
+          <p class="lead">
+            Hotelul Continental este un reper istoric al Clujului, nu un trofeu
+            de imagine pentru persoane asociate cu scandaluri publice și valori
+            care nu reprezintă comunitatea noastră.
+          </p>
+
+          <div class="action">
+            <button id="emailButton" type="button" aria-expanded="false" aria-controls="emailChoices">
+              Trimite email primăriei
+            </button>
+            <div class="choices" id="emailChoices" hidden>
+              <button class="choice choice--gmail" type="button" data-service="gmail">Gmail</button>
+              <button class="choice choice--yahoo" type="button" data-service="yahoo">Yahoo + paste</button>
+              <button class="choice choice--outlook" type="button" data-service="outlook">Outlook</button>
+              <button class="choice choice--default" type="button" data-service="default">Aplicația implicită</button>
+              <p class="status" id="emailStatus" role="status" aria-live="polite">
+                Pentru Yahoo, textul emailului va fi copiat automat. Dă click dreapta și alege Paste/Lipește, apoi semnează cu numele tău.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="steps" aria-labelledby="steps-title">
+        <div class="section-inner">
+          <h2 id="steps-title">Cum trimiți mesajul</h2>
+          <ol>
+            <li>Apasă butonul din mijlocul paginii.</li>
+            <li>Alege Gmail, Yahoo, Outlook sau aplicația implicită de email.</li>
+            <li>La Yahoo, textul se copiază automat. Dă click dreapta și alege Paste/Lipește în corpul emailului.</li>
+            <li>La finalul emailului, semnează cu numele tău înainte să trimiți.</li>
+            <li>Verifică și trimite.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="preview" aria-labelledby="preview-title">
+        <div class="section-inner">
+          <h2 id="preview-title">Textul emailului</h2>
+          <p class="note">
+            Mesajul este adresat către registratura Primăriei Cluj-Napoca și cabinetul primarului.
+          </p>
+          <pre id="emailPreview"></pre>
+        </div>
+      </section>
+
+      <footer class="credit">
+        Foto: Andrei kokelburg, Wikimedia Commons, CC BY-SA 3.0 RO.
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
