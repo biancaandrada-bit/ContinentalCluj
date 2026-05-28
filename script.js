@@ -5,6 +5,18 @@ const recipients = [
 
 const subject = "Solicitare civică privind protejarea Hotelului Continental Cluj";
 
+function removeRomanianDiacritics(text) {
+  return text
+    .replace(/[ăâ]/g, "a")
+    .replace(/[ĂÂ]/g, "A")
+    .replace(/[î]/g, "i")
+    .replace(/[Î]/g, "I")
+    .replace(/[șş]/g, "s")
+    .replace(/[ȘŞ]/g, "S")
+    .replace(/[țţ]/g, "t")
+    .replace(/[ȚŢ]/g, "T");
+}
+
 function buildEmailBody() {
   return `Către Domnul Primar Emil Boc,
 
@@ -35,10 +47,12 @@ function updatePreview() {
 
 function buildComposeUrl(service) {
   const body = buildEmailBody();
-  const bodyWithEmailParagraphs = body.replace(/\n/g, "\r\n");
+  const bodyForUrl = service === "default" ? removeRomanianDiacritics(body) : body;
+  const subjectForUrl = service === "default" ? removeRomanianDiacritics(subject) : subject;
+  const bodyWithEmailParagraphs = bodyForUrl.replace(/\n/g, "\r\n");
   const to = recipients.join(",");
   const encodedTo = encodeURIComponent(to);
-  const encodedSubject = encodeURIComponent(subject);
+  const encodedSubject = encodeURIComponent(subjectForUrl);
   const encodedBody = encodeURIComponent(bodyWithEmailParagraphs);
 
   if (service === "gmail") {
