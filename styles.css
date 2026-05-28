@@ -153,14 +153,20 @@ button:active {
 }
 
 .choice {
+  display: inline-grid;
+  place-items: center;
   min-width: 0;
   min-height: 38px;
   padding: 0 8px;
   border: 1px solid rgba(247, 243, 234, 0.18);
   border-radius: 8px;
+  color: #fff8ee;
   box-shadow: none;
   font-size: 0.82rem;
+  font-weight: 900;
   line-height: 1.1;
+  text-align: center;
+  text-decoration: none;
   white-space: normal;
   overflow-wrap: anywhere;
 }

@@ -56,10 +56,36 @@ function buildComposeUrl(service) {
   return `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
 }
 
+function buildMobileAppUrl(service) {
+  const body = buildEmailBody().replace(/\n/g, "\r\n");
+  const to = encodeURIComponent(recipients.join(","));
+  const encodedSubject = encodeURIComponent(subject);
+  const encodedBody = encodeURIComponent(body);
+
+  if (service === "gmail") {
+    return `googlegmail:///co?to=${to}&subject=${encodedSubject}&body=${encodedBody}`;
+  }
+
+  if (service === "yahoo") {
+    return `ymail://mail/compose?to=${to}&subject=${encodedSubject}`;
+  }
+
+  if (service === "outlook") {
+    return `ms-outlook://compose?to=${to}&subject=${encodedSubject}&body=${encodedBody}`;
+  }
+
+  return buildComposeUrl(service);
+}
+
+function isMobileDevice() {
+  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
 function toggleChoices() {
   const isHidden = emailChoices.hidden;
   emailChoices.hidden = !isHidden;
   emailButton.setAttribute("aria-expanded", String(isHidden));
+  updateChoiceLinks();
 }
 
 function sendEmail(service) {
@@ -69,8 +95,13 @@ function sendEmail(service) {
       ? "Pentru Yahoo, textul emailului a fost copiat automat. Dă click dreapta și alege Paste/Lipește, apoi semnează cu numele tău."
       : "Nu am putut copia automat. Selectează textul din preview și copiază-l manual în Yahoo.";
   }
+}
 
-  window.open(buildComposeUrl(service), "_blank", "noopener,noreferrer");
+function updateChoiceLinks() {
+  emailChoices.querySelectorAll("[data-service]").forEach((link) => {
+    const service = link.dataset.service;
+    link.href = isMobileDevice() ? buildMobileAppUrl(service) : buildComposeUrl(service);
+  });
 }
 
 function copyEmailBody() {
@@ -113,4 +144,5 @@ emailChoices.addEventListener("click", (event) => {
 
   sendEmail(button.dataset.service);
 });
+updateChoiceLinks();
 updatePreview();
