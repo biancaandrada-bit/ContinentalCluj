@@ -24,10 +24,11 @@
               Trimite email primăriei
             </button>
             <div class="choices" id="emailChoices" hidden>
-              <a class="choice choice--gmail" href="#" data-service="gmail">Gmail</a>
-              <a class="choice choice--yahoo" href="#" data-service="yahoo">Yahoo + paste</a>
-              <a class="choice choice--outlook" href="#" data-service="outlook">Outlook</a>
-              <a class="choice choice--default" href="#" data-service="default">Aplicația implicită</a>
+              <a class="choice choice--gmail desktop-choice" href="#" data-service="gmail">Gmail</a>
+              <a class="choice choice--yahoo desktop-choice" href="#" data-service="yahoo">Yahoo + paste</a>
+              <a class="choice choice--outlook desktop-choice" href="#" data-service="outlook">Outlook</a>
+              <a class="choice choice--default desktop-choice" href="#" data-service="default">Aplicația implicită</a>
+              <a class="choice choice--default mobile-choice" href="#" data-service="default">Alege aplicația de email</a>
               <p class="status" id="emailStatus" role="status" aria-live="polite">
                 Pentru Yahoo, textul emailului va fi copiat automat. Dă click dreapta și alege Paste/Lipește, apoi semnează cu numele tău.
               </p>
@@ -41,7 +42,8 @@
           <h2 id="steps-title">Cum trimiți mesajul</h2>
           <ol>
             <li>Apasă butonul din mijlocul paginii.</li>
-            <li>Alege Gmail, Yahoo, Outlook sau aplicația implicită de email.</li>
+            <li>Pe telefon, alege aplicația de email din fereastra afișată.</li>
+            <li>Pe desktop, alege Gmail, Yahoo, Outlook sau aplicația implicită de email.</li>
             <li>La Yahoo, textul se copiază automat. Dă click dreapta și alege Paste/Lipește în corpul emailului.</li>
             <li>La finalul emailului, semnează cu numele tău înainte să trimiți.</li>
             <li>Verifică și trimite.</li>
